@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'LogIn.dart';
+
+
 void main() {
   runApp(MyApp());
 }
@@ -11,6 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -29,11 +33,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-      appBar: AppBar() ,
-      body: Text("hello world")
-
-
-    );
+    return Login();
   }
 }
