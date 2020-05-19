@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+
+import './AboutApp.dart';
+
 import './SignUp.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -11,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: MyHomePage(),
+      home: OnboardingScreen(),
     );
   }
 }
