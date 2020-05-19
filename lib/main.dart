@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+
 import './AboutApp.dart';
+
+import './SignUp.dart';
+
+
 void main() {
   runApp(MyApp());
 }
@@ -29,11 +34,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-      appBar: AppBar() ,
-      body: Text("hello world")
-
-
-    );
+    return SignUp();  //test page SignUp
   }
 }
