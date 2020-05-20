@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import './AboutApp.dart';
 
 import './SignUp.dart';
+import 'Menu.dart';
 
 
 void main() {
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: OnboardingScreen(),
+      home: Menu(),
+
     );
   }
 }
