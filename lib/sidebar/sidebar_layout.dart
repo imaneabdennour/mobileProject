@@ -1,10 +1,11 @@
 import 'package:bluetrack/sidebar/navigation_bloc.dart';
-import 'package:bluetrack/sidebar/sidebar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../Menu.dart';
 
-class Menu extends StatelessWidget {
+
+class SideBarLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +18,7 @@ class Menu extends StatelessWidget {
                 return navigationState as Widget;
               },
             ),
-            SideBar(),
+            Menu(),
           ],
         ),
       ),
