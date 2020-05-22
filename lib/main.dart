@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'LogIn.dart';
+
+
 import './AboutApp.dart';
 
 import './SignUp.dart';
@@ -16,8 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: Menu(),
-
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -36,6 +38,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
 
-    return SignUp();  //test page SignUp
+    return Login();
   }
 }
