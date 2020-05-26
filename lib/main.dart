@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'LogIn.dart';
-
-
+import 'Statistiques/StatistiquesHome.dart';
 import './AboutApp.dart';
-
 import './SignUp.dart';
 import 'Menu.dart';
 
@@ -39,6 +37,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
 
-    return Login();
+    return StatistiquesHome();
   }
 }
