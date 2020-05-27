@@ -26,6 +26,9 @@ dependencies:
   simple_animations: ^1.3.3
   firebase_auth:
   firebase_core: ^0.4.4+3
+  sqflite:
+  path:
+  shared_preferences:
 
 
 

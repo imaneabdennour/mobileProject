@@ -1,8 +1,11 @@
 import 'package:bluetrack/Model/User.dart';
+import 'package:bluetrack/SignUp.dart';
 import 'package:bluetrack/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:bluetrack/PersonalAnimations/FadeAnimation.dart';
+
+
+import 'Animation/FadeAnimation.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -182,7 +185,9 @@ class _LoginState extends State<Login> {
                               height: 40,
                             ),
                             GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUp()));
+                                },
                                 child: FadeAnimation(
                                     2,
                                     Center(
