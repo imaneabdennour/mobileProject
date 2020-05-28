@@ -36,14 +36,15 @@ class _MyHomePageState extends State<MyHomePage> {
         future: getVisitingFlag(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-
-    return SignUp();  //test page SignUp
-  }
+            return SignUp();  //test page SignUp
+          }
 
   _myBuilderFunction(dynamic flag) {
     if (flag)
       return Login();
     else
       return OnboardingScreen();
+  }
+}
   }
 }
