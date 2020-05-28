@@ -29,7 +29,7 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
         yield Home();
         break;
       case NavigationEvents.QuizClickedEvent:
-        yield Home();
+        yield ();
         break;
       case NavigationEvents.ConseilClickedEvent:
         yield Home();
