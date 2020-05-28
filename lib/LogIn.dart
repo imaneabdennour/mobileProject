@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 
 import 'Animation/FadeAnimation.dart';
+import 'loader.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -157,10 +158,7 @@ class _LoginState extends State<Login> {
                             ),
                             FlatButton(
                               onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => MyApp()));
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>ColorLoader3()));
                               },
                               child: FadeAnimation(
                                   1.9,

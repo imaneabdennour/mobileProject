@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import './utilities/styles.dart';
 import 'LogIn.dart';
+import 'SignUp.dart';
 
 class OnboardingScreen extends StatefulWidget {
   @override
@@ -591,8 +592,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                         onTap: () {
                                            setVisitingFlag();
                                           //Navigator.push(context, MaterialPageRoute(builder: (context)=>));
-                                           Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Login()));
+                                           //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Login()));
+                                          Navigator.pop(context);
+                                          Navigator.push(
+                                           context,
+                                           MaterialPageRoute(
+                                           builder: (context) => Login()));
                                         },
+
+
                                         child: Center(
                                           child: Text('Commencer',
                                               style: TextStyle(
