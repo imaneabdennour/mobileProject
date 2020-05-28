@@ -62,8 +62,11 @@ flutter:
 
   #   - images/a_dot_ham.jpeg
 
-    - images/
+    - images/medical.png
     - images/signup.png
+    - images/patent.png
+    - images/test.png
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
