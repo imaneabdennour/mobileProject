@@ -6,6 +6,8 @@ import 'LogIn.dart';
 import './AboutApp.dart';
 import 'loader.dart';
 
+import './SignUp.dart';
+import 'StartQuiz.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,8 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: OnboardingScreen(),
     );
   }
 }
@@ -36,17 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
 
-            return _myBuilderFunction(snapshot.data);
-          } else {
-            return ColorLoader3();
-          }
-        });
-    //for test comment the  previous code and use this code
-    /*return Scaffold(
-      body: ColorLoader3()
-    );*/
-
-
+    return SignUp();  //test page SignUp
   }
 
   _myBuilderFunction(dynamic flag) {
