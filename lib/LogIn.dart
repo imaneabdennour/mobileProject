@@ -1,3 +1,4 @@
+import 'package:bluetrack/Menu.dart';
 import 'package:bluetrack/Model/User.dart';
 import 'package:bluetrack/SignUp.dart';
 import 'package:bluetrack/main.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 
 
 import 'Animation/FadeAnimation.dart';
+import 'Statistiques/StatistiquesHome.dart';
 import 'loader.dart';
 
 class Login extends StatefulWidget {
@@ -142,7 +144,9 @@ class _LoginState extends State<Login> {
                               height: 20,
                             ),
                             GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+
+                                },
                                 child: FadeAnimation(
                                     1.7,
                                     Center(
@@ -158,7 +162,7 @@ class _LoginState extends State<Login> {
                             ),
                             FlatButton(
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>ColorLoader3()));
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Menu()));
                               },
                               child: FadeAnimation(
                                   1.9,
@@ -171,10 +175,13 @@ class _LoginState extends State<Login> {
                                         borderRadius:
                                             BorderRadius.circular(50)),
                                     child: Center(
-                                      child: Text(
-                                        "Se connecter",
-                                        style: TextStyle(color: Colors.white),
-                                      ),
+
+
+                                        child: Text(
+                                          "Se connecter",
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+
                                     ),
                                   )),
                             ),

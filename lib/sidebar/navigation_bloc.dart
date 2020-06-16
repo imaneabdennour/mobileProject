@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:bluetrack/Quiz.dart';
+import 'package:bluetrack/Statistiques/StatistiquesHome.dart';
 
 import '../Home.dart';
 
@@ -14,13 +16,13 @@ abstract class NavigationStates {}
 
 class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
   @override
-  NavigationStates get initialState => Home();
+  NavigationStates get initialState => StatistiquesHome();
 
   @override
   Stream<NavigationStates> mapEventToState(NavigationEvents event) async* {
     switch (event) {
       case NavigationEvents.HomePageClickedEvent:
-        yield Home();
+        yield StatistiquesHome();
         break;
       case NavigationEvents.NotificationClickedEvent:
         yield Home();
@@ -29,7 +31,7 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
         yield Home();
         break;
       case NavigationEvents.QuizClickedEvent:
-        yield ();
+        yield Quiz();
         break;
       case NavigationEvents.ConseilClickedEvent:
         yield Home();

@@ -1,7 +1,8 @@
 
+import 'package:bluetrack/sidebar/navigation_bloc.dart';
 import 'package:flutter/material.dart';
 
-class Quiz extends StatefulWidget {
+class Quiz extends StatefulWidget with NavigationStates {
   @override
   _QuizState createState() => _QuizState();
 }

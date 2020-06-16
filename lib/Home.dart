@@ -7,7 +7,7 @@ class Home extends StatelessWidget with NavigationStates {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        "Accueil",
+        "Accueilss",
         style: TextStyle(fontWeight: FontWeight.w900, fontSize: 28),
       ),
     );

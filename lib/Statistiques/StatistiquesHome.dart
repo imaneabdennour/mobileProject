@@ -1,3 +1,4 @@
+import 'package:bluetrack/sidebar/navigation_bloc.dart';
 import 'package:flutter/material.dart';
 import './Widgets/PreventionCard.dart';
 import './Widgets/CaseCard.dart';
@@ -7,7 +8,7 @@ import 'dart:convert';
 import './Widgets/MostAffectedCountries.dart';
 import './Widgets/CountryPage.dart';
 
-class StatistiquesHome extends StatefulWidget {
+class StatistiquesHome extends StatefulWidget with NavigationStates  {
   @override
   _StatistiquesHomeState createState() => _StatistiquesHomeState();
 }
@@ -67,7 +68,7 @@ class _StatistiquesHomeState extends State<StatistiquesHome> {
                     FadeAnimation(
                       1,
                       Padding(
-                        padding: const EdgeInsets.only(top:12.0),
+                        padding: const EdgeInsets.only(top:12.0,left: 20),
                         child: Row(
                           children: <Widget>[
                             Text(
@@ -115,7 +116,7 @@ class _StatistiquesHomeState extends State<StatistiquesHome> {
                 1.3,
                 Container(
                   //container dial l cases for Morocco
-                  padding: EdgeInsets.only(left: 20, top: 10, right: 20, bottom: 10),
+                  padding: EdgeInsets.only(left: 50, top: 10, right: 20, bottom: 10),
                   height: 300,
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -187,13 +188,13 @@ class _StatistiquesHomeState extends State<StatistiquesHome> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           PreventionCard(
-                              svgSrc: "images/icons/hand_wash.svg",
+                              svgSrc: "images/hand_wash.svg",
                               title: "Se laver"),
                           PreventionCard(
-                              svgSrc: "images/icons/use_mask.svg",
+                              svgSrc: "images/use_mask.svg",
                               title: "Utiliser un masque"),
                           PreventionCard(
-                              svgSrc: "images/icons/Clean_Disinfect.svg",
+                              svgSrc: "images/Clean_Disinfect.svg",
                               title: "Désinfecter"),
                         ],
                       ),
