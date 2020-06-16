@@ -36,7 +36,7 @@ class InfoCard extends StatelessWidget {
                     shape: BoxShape.circle,
                   ),
                   child: SvgPicture.asset(
-                    "images/icons/running.svg",
+                    "images/running.svg",
                     width: 20,
                     height: 20,
                     color: iconColor,
