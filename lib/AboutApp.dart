@@ -532,7 +532,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Container(
-                              height: 425,
+                              height: 225,
                               decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage('images/map.jpg'),

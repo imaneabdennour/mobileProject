@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "574630442314",
-    "firebase_url": "https://phonesignup-42f97.firebaseio.com",
-    "project_id": "phonesignup-42f97",
-    "storage_bucket": "phonesignup-42f97.appspot.com"
+    "project_number": "27055778088",
+    "firebase_url": "https://covid-db24d.firebaseio.com",
+    "project_id": "covid-db24d",
+    "storage_bucket": "covid-db24d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:574630442314:android:32598d565d3e195a5dbdb3",
+        "mobilesdk_app_id": "1:27055778088:android:6e45302d708541aaa9881d",
         "android_client_info": {
           "package_name": "com.example.bluetrack"
         }
       },
       "oauth_client": [
         {
-          "client_id": "574630442314-4ebd6ngm6qrqf13kdjqhkpmunsdoq9i4.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.bluetrack",
-            "certificate_hash": "46889491e71a581ad9f0ea82412d8cb6442e4f94"
-          }
-        },
-        {
-          "client_id": "574630442314-dbl8kl0ds78djmkukdecsi14o7eho2t8.apps.googleusercontent.com",
+          "client_id": "27055778088-71197b7mgv6b222s9e2d4pjgvhk85r24.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyByjTTZIyl104l8OleNGFNrWCn4SUEqBkw"
+          "current_key": "AIzaSyA-ZJi4OgGo-7ICRlHSrHrcVL-kLF204hA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "574630442314-dbl8kl0ds78djmkukdecsi14o7eho2t8.apps.googleusercontent.com",
+              "client_id": "27055778088-71197b7mgv6b222s9e2d4pjgvhk85r24.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

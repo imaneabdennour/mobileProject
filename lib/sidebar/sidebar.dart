@@ -63,13 +63,13 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
           top: 0,
           bottom: 0,
           left: isSideBarOpenedAsync.data ? 0 : -screenWidth,
-          right: isSideBarOpenedAsync.data ? 0 : screenWidth - 45,
+          right: isSideBarOpenedAsync.data ? 0 : screenWidth - 40,
           child: Row(
             children: <Widget>[
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  color: const Color(0xFF118ab2),
+                  color: const Color(0xFF0F8B8D),
                   child: Column(
                     children: <Widget>[
                       SizedBox(
@@ -86,6 +86,7 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                             color: Colors.white,
                           ),
                           radius: 40,
+                           backgroundColor: const Color(0xFF0F8B8D),
                         ),
                       ),
                       Divider(
@@ -105,7 +106,7 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                       ),
                       MenuItem(
                         icon: Icons.notifications,
-                        title: "Notifications",
+                        title: "Etat",
                         onTap: () {
                           onIconPressed();
                           BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.NotificationClickedEvent);
@@ -168,7 +169,7 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                     child: Container(
                       width: 40,
                       height: 120,
-                      color: Color(0xFF118ab2),
+                      color: Color(0xFF0F8B8D),
                       alignment: Alignment.centerLeft,
                       child: AnimatedIcon(
                         progress: _animationController.view,

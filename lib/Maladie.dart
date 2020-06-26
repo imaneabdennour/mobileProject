@@ -1,16 +1,15 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import './utilities/styles.dart';
-import './Quiz.dart';
 import 'package:bluetrack/sidebar/navigation_bloc.dart';
 
+import 'adresse.dart';
 
-class StartQuizState extends StatefulWidget with NavigationStates{
+class Maladie extends StatefulWidget with NavigationStates{
   @override
-  _StartQuizStateState createState() => _StartQuizStateState();
+ _MaladieWidgetState createState() => _MaladieWidgetState();
 }
 
-class _StartQuizStateState extends State<StartQuizState> {
+class _MaladieWidgetState extends State<Maladie> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,16 +32,15 @@ class _StartQuizStateState extends State<StartQuizState> {
                     height: 50,
 
                   ),
-                  DrawerHeader(//hia li fiha tsouira cause it s a header
-
-                    child:Center(
-                      child: CircleAvatar(
-
-                        radius: 90,
-                        backgroundImage: AssetImage('images/test.png'),
-                      ),
-                    ),
-                  ),
+                   Container( 
+                 
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('images/covid.png'),
+                          //fit: BoxFit.fill
+                        )
+                    ),),
+                  
 
                   /*SizedBox(
                     width:80,
@@ -61,7 +59,7 @@ class _StartQuizStateState extends State<StartQuizState> {
                       child: Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: Text(
-                          "La recommandation affichée peut évoluer suivant les informations en provenance des autorités de santé et des chercheurs. \nElle ne constitue pas un avis médical. \nEn cas de doute, demandez conseil à votre médecin ou pharmacien.",
+                          "Vueillez cliquer sur le button ci-dessous si votre test de covid-19 est positive,\n à fin de notifier les personnes que vous avez rencontré durant les 5 jours précédent,\n sans leur montrez votre identité, pour qu'ils soient plus prudent et faire aussi le test pour s'assurer\n s'ils ne sont malade eux aussi. ",
                           style: TextStyle(fontSize: 22, color: Colors.white /*fontWeight: FontWeight.bold*/),
                           textAlign : TextAlign.justify,
                         ),
@@ -81,7 +79,7 @@ class _StartQuizStateState extends State<StartQuizState> {
                         child: RaisedButton(
 
                           onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Quiz()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Adresse()));
                           },
 
                           color:Colors.transparent,
@@ -89,7 +87,7 @@ class _StartQuizStateState extends State<StartQuizState> {
                               borderRadius: BorderRadius.circular(18.0),
                               side: BorderSide(color:Colors.transparent,)),
 
-                          child: Text("Demarrez le test", style:TextStyle(
+                          child: Text("Malade", style:TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.bold),),
                           textColor: Colors.white,
@@ -104,3 +102,6 @@ class _StartQuizStateState extends State<StartQuizState> {
     );
   }
 }
+
+
+

@@ -1,3 +1,4 @@
+import 'package:bluetrack/services/AlertNotificationService.dart';
 import 'package:bluetrack/utilities/userInfo.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: OnboardingScreen(),
+      home: MyHomePage(),
     );
   }
 }
@@ -31,13 +32,30 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState(); 
+    //**************************************add it l login*********************************
+    AlertNotificationService().init();
+  }
+  @override
   Widget build(BuildContext context) {
     return FutureBuilder<dynamic>(
         future: getVisitingFlag(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
 
-    return SignUp();  //test page SignUp
+            return _myBuilderFunction(snapshot.data);
+          } else {
+            return ColorLoader3();
+          }
+        });
+    //for test comment the  previous code and use this code
+    /*return Scaffold(
+      body: ColorLoader3()
+    );*/
+
+
   }
 
   _myBuilderFunction(dynamic flag) {
@@ -46,4 +64,5 @@ class _MyHomePageState extends State<MyHomePage> {
     else
       return OnboardingScreen();
   }
-        });}}
+}
+
