@@ -25,7 +25,7 @@ class AlertNotificationService {
   Future<void> init() async{
     if (!_initialized) {
       var initializationSettingsAndroid =
-          AndroidInitializationSettings('app_icon');
+          AndroidInitializationSettings('covid');
       var initializationSettingsIOS = IOSInitializationSettings(
           onDidReceiveLocalNotification: onDidReceiveLocalNotification);
       var initializationSettings = InitializationSettings(
@@ -41,7 +41,7 @@ class AlertNotificationService {
   _startShowingAlerts() async {
     //you can change the notification interval as u like from 
     //there another params like ==> minutes, hours ...
-    const oneSec = const Duration(minutes: 10);
+    const oneSec = const Duration(minutes: 5);
     _timer = new Timer.periodic(oneSec, (Timer timer) {
       _showNotification();
     });
@@ -61,15 +61,15 @@ class AlertNotificationService {
         androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
     await flutterLocalNotificationsPlugin.show(
         0, 
-        'plain title', 
-        'Number '+ shuffleAlerts(), 
+        'Conseils', 
+         shuffleAlerts(), 
         platformChannelSpecifics,
         payload: 'item x');
   }
 
   String shuffleAlerts() {
     //this list should contains the messages 
-    List<String> list = ['alert1', 'alert2', 'alert3', 'alert4'];
+    List<String> list = ['Respectez les mesures de distanciation sociales', 'Portez un masque.', 'Limitez les interactions sociales.', 'Lavez-vous régulièrement les mains.', 'Toussez dans un mouchoir', 'Restez chez vous autant que possible.', 'Ne pas touchez le visage', 'Saluez sans serrer la main.', "N'embrassez personne.", 'Faisez le test du covid-19'];
     list.shuffle();
     return list[0];
   }

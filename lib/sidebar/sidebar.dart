@@ -73,11 +73,11 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                   child: Column(
                     children: <Widget>[
                       SizedBox(
-                        height: 100,
+                        height:50, //100,
                       ),
                       ListTile(
-                        title: Text(
-                          "UserName",
+                        title: Text(" ",
+                         // "UserName",
                           style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w800),
                         ),
                         leading: CircleAvatar(
@@ -90,7 +90,7 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                         ),
                       ),
                       Divider(
-                        height: 64,
+                        height:30, //64,
                         thickness: 0.5,
                         color: Colors.white.withOpacity(0.3),
                         indent: 32,
@@ -106,7 +106,7 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                       ),
                       MenuItem(
                         icon: Icons.notifications,
-                        title: "Etat",
+                        title: "Etat de maladie",
                         onTap: () {
                           onIconPressed();
                           BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.NotificationClickedEvent);
@@ -137,7 +137,7 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                         },
                       ),
                       Divider(
-                        height: 64,
+                        height: 30,//64,
                         thickness: 0.5,
                         color: Colors.white.withOpacity(0.3),
                         indent: 32,

@@ -1,4 +1,6 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:bluetrack/sidebar/navigation_bloc.dart';
 
@@ -9,9 +11,11 @@ class Maladie extends StatefulWidget with NavigationStates{
  _MaladieWidgetState createState() => _MaladieWidgetState();
 }
 
+final FirebaseAuth users = FirebaseAuth.instance;
 class _MaladieWidgetState extends State<Maladie> {
   @override
   Widget build(BuildContext context) {
+      final deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
      // appBar: AppBar(backgroundColor: Colors.greenAccent,),
       body: Container(
@@ -29,11 +33,13 @@ class _MaladieWidgetState extends State<Maladie> {
                 children: <Widget>[
                   SizedBox(
                     width:80,
-                    height: 50,
+                    height: 45,
+                    //height: deviceHeight / 4 - 20,
 
                   ),
                    Container( 
-                 
+                   width:100,
+                    height: 70,
                     decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage('images/covid.png'),
@@ -59,16 +65,16 @@ class _MaladieWidgetState extends State<Maladie> {
                       child: Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: Text(
-                          "Vueillez cliquer sur le button ci-dessous si votre test de covid-19 est positive,\n à fin de notifier les personnes que vous avez rencontré durant les 5 jours précédent,\n sans leur montrez votre identité, pour qu'ils soient plus prudent et faire aussi le test pour s'assurer\n s'ils ne sont malade eux aussi. ",
-                          style: TextStyle(fontSize: 22, color: Colors.white /*fontWeight: FontWeight.bold*/),
-                          textAlign : TextAlign.justify,
+                          "Vueillez cliquer sur le button ci-dessous si votre test de covid-19 est positive, afin de notifier les personnes que vous avez rencontré durant les 5 jours précédent, sans leur montrez votre identité, pour qu'ils soient plus prudent et faire aussi le test pour s'assurer s'ils ne sont malade eux aussi. ",
+                          style: TextStyle(fontSize: 15, color: Colors.white /*fontWeight: FontWeight.bold*/),
+                         // textAlign : TextAlign.justify,
                         ),
                       ),
                     ),
                   ),
                   SizedBox(
                     width:80,
-                    height: 20,
+                    height: 40,
 
                   ),
                   Padding(
@@ -79,6 +85,7 @@ class _MaladieWidgetState extends State<Maladie> {
                         child: RaisedButton(
 
                           onPressed: (){
+                             updateDataPatient();
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>Adresse()));
                           },
 
@@ -87,8 +94,8 @@ class _MaladieWidgetState extends State<Maladie> {
                               borderRadius: BorderRadius.circular(18.0),
                               side: BorderSide(color:Colors.transparent,)),
 
-                          child: Text("Malade", style:TextStyle(
-                              fontSize: 25,
+                          child: Text("Je suis malade", style:TextStyle(
+                              fontSize: 17,
                               fontWeight: FontWeight.bold),),
                           textColor: Colors.white,
 
@@ -100,6 +107,15 @@ class _MaladieWidgetState extends State<Maladie> {
         ),
       ),
     );
+  }
+  void updateDataPatient() async {
+    final FirebaseUser user = await users.currentUser();
+    final uid = user.uid;
+    print(uid);
+    
+     await Firestore.instance.collection('users').document(uid).updateData({"Etat": true});
+
+    // here you write the codes to input the data into firestore
   }
 }
 

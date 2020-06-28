@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<dynamic>(
+    /*return FutureBuilder<dynamic>(
         future: getVisitingFlag(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
@@ -49,11 +49,11 @@ class _MyHomePageState extends State<MyHomePage> {
           } else {
             return ColorLoader3();
           }
-        });
+        });*/
     //for test comment the  previous code and use this code
-    /*return Scaffold(
-      body: ColorLoader3()
-    );*/
+    return Scaffold(
+      body: SignUp()
+    );
 
 
   }

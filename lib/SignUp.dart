@@ -1,16 +1,29 @@
 //import 'package:bluetrack/Model/User.dart';
+import 'dart:math';
+
+import 'package:bluetrack/Menu.dart';
 import 'package:bluetrack/main.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bluetrack/Animation/FadeAnimation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:bluetrack/LogIn.dart';
+import 'package:bluetrack/sidebar/navigation_bloc.dart';
 
-class SignUp extends StatefulWidget {
+
+class SignUp extends StatefulWidget  with NavigationStates{
   @override
   _SignUpState createState() => _SignUpState();
 }
 
+final FirebaseAuth mAuth = FirebaseAuth.instance;
+
 class _SignUpState extends State<SignUp> {
   Color mainColor = Color(0xff0F8B8D);
+  TextEditingController emailController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
+
  // User user = new User();
 
   @override
@@ -100,12 +113,13 @@ class _SignUpState extends State<SignUp> {
                                                       color: Colors.grey[200])),
                                             ),
                                             child: TextField(
+                                              controller: emailController,
                                               onChanged: (value) {
                                                     //traitement
                                               },
                                               decoration: InputDecoration(
                                                   border: InputBorder.none,
-                                                  hintText: "Num de téléphone",
+                                                  hintText: "Email",
                                                   hintStyle: TextStyle(
                                                       color: Colors.grey)),
                                             ),
@@ -113,9 +127,10 @@ class _SignUpState extends State<SignUp> {
                                           Container(
                                             padding: EdgeInsets.all(10),
                                             child: TextField(
-                                              onChanged: (value) {
+                                              controller: passwordController,
+                                             /* onChanged: (value) {
                                                 //traitement
-                                              },
+                                              },*/
                                               decoration: InputDecoration(
                                                   border: InputBorder.none,
                                                   hintText: "Password",
@@ -152,10 +167,11 @@ class _SignUpState extends State<SignUp> {
                             ),
                             FlatButton(
                               onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => MyApp()));
+                                signUpWithEmailPssword();
+                                 Navigator.push(
+                                 context,
+                                 MaterialPageRoute(
+                                 builder: (context) => Login()));
                               },
                               child: FadeAnimation(
                                   1.9,
@@ -175,6 +191,9 @@ class _SignUpState extends State<SignUp> {
                                     ),
                                   )),
                             ),
+                            /*RaisedButton(
+                              child: Text("S'inscrire"),
+                              onPressed: ),*/
 
                             SizedBox(
                               height: 40,
@@ -205,4 +224,54 @@ class _SignUpState extends State<SignUp> {
       ),
     );
   }
+  Future<void> signUpWithEmailPssword()
+  async {
+   /* if(_formKey.currentState.validate()){
+  _formKey.currentState.save();*/
+   
+    //FirebaseUser result;
+    try{
+    AuthResult result = await mAuth.createUserWithEmailAndPassword(email: emailController.text, password: passwordController.text);
+      FirebaseUser user = result.user;
+      final FirebaseUser auth = await mAuth.currentUser();
+      final uid = auth.uid;
+      var personneRencontree = [{'id': 'szrjihZ1BHPmWLVUB8fT7silrKp2'}, {'id': 'B8wHSywxrYhOec4M3dcnCFozJhp2'}, {'id': 'zszvRS6h8ZbWRA5QnUKfFwAxU9G2'}];
+     /* var localisation = new Map();
+         localisation['longitude'] = '12'; 
+         localisation['latitude'] = '15'; 
+         localisation['latitude'] = '06-21-2020'; */
+         List<Map<String, String>> localisation = [
+  {'longitude': '12', 'latitude': '15','time':'06-28-2020'},
+  {'longitude': '42', 'latitude': '105','time':'06-27-2020'},
+  {'longitude': '20', 'latitude': '13', 'time':'06-21-2020'/*DateTime.now()*/},
+];
+
+
+      //Map<String, dynamic> myObject = {'latitude': widget.lat} ;
+     // await Firestore.instance.collection('users').document().setData({ 'Etat': false});
+      await Firestore.instance.collection('users').document(uid).setData({'id':uid,'Etat': false,"personneRencontree": FieldValue.arrayUnion(personneRencontree),"localisation": FieldValue.arrayUnion(localisation), "adress":""});
+      /*final DocumentReference documentReference=await Firestore.instance.collection('users').add({'id':"",'Etat': "","personneRencontree": "","localisation": ""});
+      final String id = documentReference.documentID;*/
+      //await Firestore.instance.collection('users').document().updateData({'id':id,});
+
+
+      //firestore.instance.collection("collectionName").document("documentID").setData({field : value }, merge: true
+      //Firestore.instance.collection('users').document(id).setData({'id': id,'Etat': false,"personneRencontree": FieldValue.arrayUnion(personneRencontree),"localisation": FieldValue.arrayUnion(localisation)});
+     // await Firestore.instance.collection('users').document().setData({"localisation": FieldValue.arrayUnion(localisation)});
+
+   /* var ref = Firestore.instance.document('collection/document');
+ref.setData(
+  {
+    'localisation': localisation,
+  }
+);*/
+
+      //var list = List<String>();
+      //list.add(personneRencontree);
+     
+    }catch(e)
+    {
+      print(e.toString());
+    }
+     }
 }

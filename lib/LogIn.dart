@@ -4,7 +4,7 @@ import 'package:bluetrack/SignUp.dart';
 import 'package:bluetrack/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'Animation/FadeAnimation.dart';
 import 'Statistiques/StatistiquesHome.dart';
@@ -15,9 +15,12 @@ class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
 }
 
+final FirebaseAuth mAuth = FirebaseAuth.instance;
 class _LoginState extends State<Login> {
   Color mainColor = Color(0xff0F8B8D);
   User user = new User();
+  TextEditingController emailController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -106,13 +109,14 @@ class _LoginState extends State<Login> {
                                                       color: Colors.grey[200])),
                                             ),
                                             child: TextField(
+                                                   controller: emailController,
                                               onChanged: (value) {
                                                 this.user.username = value;
 
                                               },
                                               decoration: InputDecoration(
                                                   border: InputBorder.none,
-                                                  hintText: "Username",
+                                                  hintText: "Email",
                                                   hintStyle: TextStyle(
                                                       color: Colors.grey)),
                                             ),
@@ -120,6 +124,7 @@ class _LoginState extends State<Login> {
                                           Container(
                                             padding: EdgeInsets.all(10),
                                             child: TextField(
+                                               controller: passwordController,
                                               onChanged: (value) {
                                                 this.user.password = value;
 
@@ -160,8 +165,9 @@ class _LoginState extends State<Login> {
                             SizedBox(
                               height: 40,
                             ),
-                            FlatButton(
+                            RaisedButton(
                               onPressed: () {
+                                 LogInWithEmailPssword();
                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Menu()));
                               },
                               child: FadeAnimation(
@@ -217,4 +223,21 @@ class _LoginState extends State<Login> {
       ),
     );
   }
+   Future<void> LogInWithEmailPssword()
+  async {
+   
+    FirebaseUser user;
+    try{
+    user = (await mAuth.signInWithEmailAndPassword(email: emailController.text, password: passwordController.text)) as FirebaseUser;
+    }catch(e)
+    {
+      print(e.toString());
+    }
+    finally
+    {
+      if(user != null){
+        print('Login success!');
+      }
+    }
+     }
 }
