@@ -2,6 +2,8 @@
 import 'package:bluetrack/sidebar/navigation_bloc.dart';
 import 'package:flutter/material.dart';
 
+import 'Animation/FadeAnimation.dart';
+
 class Quiz extends StatefulWidget with NavigationStates {
   @override
   _QuizState createState() => _QuizState();
@@ -160,6 +162,8 @@ class _QuizState extends State<Quiz> {
   ];
   @override
   Widget build(BuildContext context) {
+    final deviceHeight = MediaQuery.of(context).size.height;
+    final deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
 
       //backgroundColor: Color (0xff143642),
@@ -204,7 +208,7 @@ class _QuizState extends State<Quiz> {
                   ),
                   SizedBox(
                     width:80,
-                    height: 70,
+                    height: deviceHeight/4 - 150,
 
                   ),
                   Padding(
@@ -220,21 +224,21 @@ class _QuizState extends State<Quiz> {
             child: Builder(
               builder: (context) {
                 if (percentage >= 70) {
-                   return Text("  Malheuresement vos symptômes nécessitent une prise en charge rapide!", style: TextStyle(fontSize: 25,
+                   return Text("Malheuresement vos symptômes nécessitent une prise en charge rapide!", style: TextStyle(fontSize: 15,
                        color: Colors.white /*fontWeight: FontWeight.bold*/));
                        //textAlign: TextAlign.justify,);
                }
                 else if (percentage > 30 && percentage < 70) {
                    return Text("Votre situation peut relever d’un COVID 19. Pour s'assurer de votre état, faisez le test chaque jour!",
-                    style: TextStyle(fontSize: 23,
+                    style: TextStyle(fontSize: 15,
                     color: Colors.white /*fontWeight: FontWeight.bold*/),
-                     textAlign: TextAlign.justify,);
+                    );
                 }
                 else if (percentage < 30) {
                 return Text("Votre état ne semble pas préoccupant ou ne relève probablement pas du COVID 19!",
-                  style: TextStyle(fontSize: 25,
+                  style: TextStyle(fontSize: 15,
                   color: Colors.white /*fontWeight: FontWeight.bold*/),
-                   textAlign: TextAlign.justify,);
+                   );
       }
     }
     )
@@ -253,15 +257,15 @@ class _QuizState extends State<Quiz> {
                   ),
                   SizedBox(
                     width:80,
-                    height: 120,
+                    height: deviceHeight/4 -25,
 
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: ButtonTheme(//nbdl size d button
                         minWidth: 320.0,
-                        height: 50.0,
-                        child: RaisedButton(
+                        //height: deviceHeight/4 -50,
+                        child: FlatButton(
 
                           onPressed: (){
                             setState(() {
@@ -270,15 +274,23 @@ class _QuizState extends State<Quiz> {
                             });
                           },
 
-                          color:Colors.transparent,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                              side: BorderSide(color:Colors.transparent,)),
-
-                          child: Text("Refaire le test", style:TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold),),
-                          textColor: Colors.white,
+                         child: FadeAnimation(
+                                  1.9,
+                                  Container(
+                                    height: 50,
+                                    margin:
+                                    EdgeInsets.symmetric(horizontal: 50),
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                        BorderRadius.circular(50)),
+                                    child: Center(
+                                      child: Text(
+                                        "Refaire le test",
+                                        style: TextStyle(color:  Color(0xff0F8B8D)),
+                                      ),
+                                    ),
+                                  )),
 
                         )),
                   ),
@@ -304,7 +316,7 @@ class _QuizState extends State<Quiz> {
                       child:Row(
                         children: <Widget>[
                           SizedBox(
-                            width:60,
+                            width:deviceWidth/4 -65, //60,
                             height: 20,
 
                           ),
@@ -358,8 +370,8 @@ class _QuizState extends State<Quiz> {
                     child: Text(
                       quiz[currentQuestion]['title'],
                       style:
-                      TextStyle(fontSize: 22,fontWeight: FontWeight.bold, color :Colors.black/*Color(0xff0081a7)*/),
-                      textAlign : TextAlign.justify,
+                      TextStyle(fontSize: 18,fontWeight: FontWeight.bold, color :Colors.black/*Color(0xff0081a7)*/),
+                      //textAlign : TextAlign.justify,
                     ),
                   ),
                 ),
@@ -388,7 +400,7 @@ class _QuizState extends State<Quiz> {
                           quiz[currentQuestion]['explication'],
                           style:
                           TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold,  color :Colors.black /*Color(0xff0081a7)*/,
+                            fontSize: 15, fontWeight: FontWeight.bold,  color :Colors.black /*Color(0xff0081a7)*/,
                           ),
                           //textAlign : TextAlign.justify,
                         ),

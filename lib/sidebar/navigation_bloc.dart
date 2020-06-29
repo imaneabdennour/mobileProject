@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:bluetrack/Conseils.dart';
 import 'package:bluetrack/SignUp.dart';
 import 'package:bluetrack/StartQuiz.dart';
 import 'package:bluetrack/Maladie.dart';
@@ -34,13 +35,13 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
         yield Maladie();
         break;
       case NavigationEvents.StatisticClickedEvent:
-        yield Home();
+        yield SignUp();
         break;
       case NavigationEvents.QuizClickedEvent:
         yield StartQuizState();
         break;
       case NavigationEvents.ConseilClickedEvent:
-        yield SignUp();
+        yield Conseils();
         break;
     }
   }

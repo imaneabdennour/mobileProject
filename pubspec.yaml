@@ -97,6 +97,11 @@ flutter:
           - asset: fonts/Baloo_2/Baloo2-Regular.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+      - family: Oxygen
+        fonts:
+          - asset: fonts/Oxygen/Oxygen-Light.ttf
+          - asset: fonts/Oxygen/Oxygen-Regular.ttf
+          - asset: fonts/Oxygen/Oxygen-Bold.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
