@@ -1,4 +1,5 @@
 import 'package:bluetrack/services/AlertNotificationService.dart';
+import 'package:bluetrack/services/PushNotificationService.dart';
 import 'package:bluetrack/utilities/userInfo.dart';
 import 'package:flutter/material.dart';
 
@@ -37,6 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState(); 
     //**************************************add it l login*********************************
     AlertNotificationService().init();
+    
   }
   @override
   Widget build(BuildContext context) {

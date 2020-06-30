@@ -236,38 +236,34 @@ class _SignUpState extends State<SignUp> {
       final FirebaseUser auth = await mAuth.currentUser();
       final uid = auth.uid;
       var personneRencontree = [{'id': 'szrjihZ1BHPmWLVUB8fT7silrKp2'}, {'id': 'B8wHSywxrYhOec4M3dcnCFozJhp2'}, {'id': 'zszvRS6h8ZbWRA5QnUKfFwAxU9G2'}];
-     /* var localisation = new Map();
-         localisation['longitude'] = '12'; 
-         localisation['latitude'] = '15'; 
-         localisation['latitude'] = '06-21-2020'; */
+
          List<Map<String, String>> localisation = [
   {'longitude': '12', 'latitude': '15','time':'06-28-2020'},
   {'longitude': '42', 'latitude': '105','time':'06-27-2020'},
   {'longitude': '20', 'latitude': '13', 'time':'06-21-2020'/*DateTime.now()*/},
 ];
+  await Firestore.instance.collection('users').document(uid).setData({'id':uid,'Etat': false,"personneRencontree": FieldValue.arrayUnion(personneRencontree),"localisation": FieldValue.arrayUnion(localisation), "adress":""});
+     
+     /* FirebaseDatabase database = FirebaseDatabase.getInstance();
+      DatabaseReference myRef = database.getReference("message");
 
+      myRef.setValue("Hello, World!");
+      // Read from the database
+      myRef.addValueEventListener(new ValueEventListener() {
+    @Override
+      public void onDataChange(DataSnapshot dataSnapshot) {
+        // This method is called once with the initial value and again
+        // whenever data at this location is updated.
+        String value = dataSnapshot.getValue(String.class);
+        Log.d(TAG, "Value is: " + value);
+      }
 
-      //Map<String, dynamic> myObject = {'latitude': widget.lat} ;
-     // await Firestore.instance.collection('users').document().setData({ 'Etat': false});
-      await Firestore.instance.collection('users').document(uid).setData({'id':uid,'Etat': false,"personneRencontree": FieldValue.arrayUnion(personneRencontree),"localisation": FieldValue.arrayUnion(localisation), "adress":""});
-      /*final DocumentReference documentReference=await Firestore.instance.collection('users').add({'id':"",'Etat': "","personneRencontree": "","localisation": ""});
-      final String id = documentReference.documentID;*/
-      //await Firestore.instance.collection('users').document().updateData({'id':id,});
-
-
-      //firestore.instance.collection("collectionName").document("documentID").setData({field : value }, merge: true
-      //Firestore.instance.collection('users').document(id).setData({'id': id,'Etat': false,"personneRencontree": FieldValue.arrayUnion(personneRencontree),"localisation": FieldValue.arrayUnion(localisation)});
-     // await Firestore.instance.collection('users').document().setData({"localisation": FieldValue.arrayUnion(localisation)});
-
-   /* var ref = Firestore.instance.document('collection/document');
-ref.setData(
-  {
-    'localisation': localisation,
-  }
-);*/
-
-      //var list = List<String>();
-      //list.add(personneRencontree);
+    @Override
+       public void onCancelled(DatabaseError error) {
+        // Failed to read value
+        Log.w(TAG, "Failed to read value.", error.toException());
+      }
+});*/
      
     }catch(e)
     {

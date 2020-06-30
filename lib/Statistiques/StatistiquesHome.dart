@@ -1,3 +1,4 @@
+import 'package:bluetrack/services/PushNotificationService.dart';
 import 'package:bluetrack/sidebar/navigation_bloc.dart';
 import 'package:flutter/material.dart';
 import './Widgets/PreventionCard.dart';
@@ -43,6 +44,8 @@ class _StatistiquesHomeState extends State<StatistiquesHome> {
 
   @override
   void initState(){
+    PushNotificationService().init();
+    PushNotificationService().storeToken();
     fetchWorldWideData();
     fetchCountryDataSorted();
     fetchCountryData();
